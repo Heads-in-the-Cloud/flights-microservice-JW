@@ -1,0 +1,13 @@
+Add Flight:
+
+User:
+Origin ID
+Dest ID
+Airplane Type
+
+check/insert originId and destId into airport table
+insert into routes - orid, desit etc table - EXCEPTION
+insert into airplane able
+
+
+DB Transaction - same connection object 
