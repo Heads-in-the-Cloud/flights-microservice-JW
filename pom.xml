@@ -11,7 +11,7 @@
 	<groupId>com.ss</groupId>
 	<artifactId>utopia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>utopia</name>
 	<description>Utopia Admin microservice</description>
 	<properties>
@@ -54,6 +54,15 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			</dependency>
+					 <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		 </dependency>
+		 <dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		 </dependency>
         </dependencies>
 
 	<build>
