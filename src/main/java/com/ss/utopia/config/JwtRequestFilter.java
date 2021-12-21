@@ -1,6 +1,7 @@
 package com.ss.utopia.config;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -13,18 +14,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import com.ss.utopia.entity.User;
-
-import io.jsonwebtoken.ExpiredJwtException;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter{
@@ -43,7 +36,12 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 		headers.set("Authorization", requestTokenHeader);
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		try{
-			ResponseEntity<String> verification = rt.exchange(usersUrl + "/verify", HttpMethod.GET, entity, String.class);
+			ResponseEntity<List> verification = rt.exchange(usersUrl + "/verify", HttpMethod.GET, entity, List.class);
+			Integer role = (Integer)verification.getBody().get(0);
+			if(role != 1 && !request.getRequestURI().equals("/booking") && !request.getMethod().equals("POST")) {
+				response.setStatus(HttpStatus.FORBIDDEN.value());
+				return;
+			}
 		}catch(HttpClientErrorException e) {
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
 			return;

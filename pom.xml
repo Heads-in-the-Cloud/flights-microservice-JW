@@ -11,11 +11,12 @@
 	<groupId>com.ss</groupId>
 	<artifactId>utopia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>${ptype}</packaging>
 	<name>utopia</name>
 	<description>Utopia Admin microservice</description>
 	<properties>
 		<java.version>11</java.version>
+		<ptype>jar</ptype>
 	</properties>
 	<dependencies>
 		<dependency>
