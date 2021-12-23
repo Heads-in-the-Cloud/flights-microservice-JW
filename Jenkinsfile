@@ -29,5 +29,11 @@ pipeline {
                 }
             }
         }
+        stage('Call docker-compose'){
+            steps{
+                echo 'Calling docker-compose job'
+                build job: 'JW-Docker-Compose'
+            }
+        }
     }
 }
