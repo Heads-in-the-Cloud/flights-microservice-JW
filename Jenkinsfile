@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "jswen19109814/flight"
+        registry = "902316339693.dkr.ecr.us-east-2.amazonaws.com/jw-flights"
         dockerImage = ''
     }
     agent any
@@ -15,7 +15,7 @@ pipeline {
                 sh 'mvn package'
                 echo 'Building image:'
                 script{
-                    userimage = docker.build registry + ":flight"
+                    flightimage = docker.build registry + ":flightimage"
                 }  
             }
         }
@@ -23,8 +23,8 @@ pipeline {
             steps{
                 echo 'Pushing image to dockerhub:'
                 script{
-                    docker.withRegistry('', 'jwdockerhub'){
-                        userimage.push()
+                    docker.withRegistry('https://902316339693.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:jw-aws-cred'){
+                        flightimage.push()
                     }
                 }
             }
