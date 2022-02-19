@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ss</groupId>
-	<artifactId>utopia-flights-microservice</artifactId>
+	<artifactId>flights</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>${ptype}</packaging>
-	<name>utopia-flights-microservice</name>
+	<name>flights</name>
 	<description>Utopia Flight microservice</description>
 	<properties>
 		<java.version>11</java.version>
