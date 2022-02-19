@@ -1,9 +1,12 @@
 pipeline {
+    agent any
     environment {
         registry = "902316339693.dkr.ecr.us-east-2.amazonaws.com/jw-flights"
         dockerImage = ''
     }
-    agent any
+    parameters{
+        string(name:'sonarqubekey', defaultValue: 'NULL', description: 'sonarqube key')
+    }
     tools { 
         maven 'mvn' 
         jdk 'java' 
