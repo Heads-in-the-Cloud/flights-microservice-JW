@@ -6,6 +6,7 @@ pipeline {
     }
     parameters{
         string(name:'sonarqubekey', defaultValue: 'NULL', description: 'sonarqube key')
+        string(name:'sonraqubelink', defualtValue: 'NULL', description: 'sonarqube url')
     }
     tools { 
         maven 'mvn' 
@@ -24,7 +25,7 @@ pipeline {
         }
         stage('Sonarqube check'){
             steps{
-                sh"mvn verify sonar:sonar -Dsonar.projectKey=flights-microservice -Dsonar.host.url=http://jenkins.hitec.link:9000 -Dsonar.login=${params.sonarqubekey}"
+                sh"mvn verify sonar:sonar -Dsonar.projectKey=flights-microservice -Dsonar.host.url=${params.sonarqubelink} -Dsonar.login=${params.sonarqubekey}"
             }
         }
         stage('Push Image'){
