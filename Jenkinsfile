@@ -6,7 +6,7 @@ pipeline {
     }
     parameters{
         string(name:'sonarqubekey', defaultValue: 'NULL', description: 'sonarqube key')
-        string(name:'sonraqubelink', defualtValue: 'NULL', description: 'sonarqube url')
+        string(name:'sonraqubelink', defaultValue: 'NULL', description: 'sonarqube url')
     }
     tools { 
         maven 'mvn' 
