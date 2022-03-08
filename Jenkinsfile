@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Sonarqube check'){
             steps{
-                sh"mvn verify sonar:sonar -Dsonar.projectKey=flights-microservice -Dsonar.host.url=http://ec2-3-21-207-168.us-east-2.compute.amazonaws.com:9000 -Dsonar.login=${params.sonarqubekey}"
+                sh"mvn verify sonar:sonar -Dsonar.projectKey=flights-microservice -Dsonar.host.url=http://ec2-3-136-83-88.us-east-2.compute.amazonaws.com:9000 -Dsonar.login=${params.sonarqubekey}"
             }
         }
         stage('Push Image'){
