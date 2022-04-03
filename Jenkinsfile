@@ -6,7 +6,6 @@ pipeline {
     }
     parameters{
         string(name:'sonarqubekey', defaultValue: 'NULL', description: 'sonarqube key')
-        string(name: 'registry', defaultValue: 'NULL', description: 'registry url')
     }
     tools { 
         maven 'mvn' 
