@@ -16,7 +16,7 @@ pipeline {
         stage('Sonarqube check'){
             steps{
                 withSonarQubeEnv('sonarqube'){
-                    sh"mvn verify sonar:sonar -Dsonar.projectKey=bookings-microservice -Dsonar.host.url=http://jenkins.hitec.link:9000 -Dsonar.login=${params.sonarqubekey}"
+                    sh"mvn verify sonar:sonar -Dsonar.projectKey=flights-microservice -Dsonar.host.url=http://jenkins.hitec.link:9000 -Dsonar.login=${params.sonarqubekey}"
                 }
             }
         }
