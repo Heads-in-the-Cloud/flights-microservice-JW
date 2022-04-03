@@ -6,7 +6,7 @@ pipeline {
     }
     parameters{
         string(name:'sonarqubekey', defaultValue: 'NULL', description: 'sonarqube key')
-        
+        string(name: 'registry', defaultValue: 'NULL', description: 'registry url')
     }
     tools { 
         maven 'mvn' 
@@ -15,8 +15,8 @@ pipeline {
     stages {
         stage('Sonarqube check'){
             steps{
-                withSonarQubeEnv('SonarQubeScanner'){
-                    sh"mvn verify sonar:sonar -Dsonar.projectKey=bookings-microservice -Dsonar.host.url=http://ec2-52-14-211-111.us-east-2.compute.amazonaws.com:9000 -Dsonar.login=${params.sonarqubekey}"
+                withSonarQubeEnv('sonarqube'){
+                    sh"mvn verify sonar:sonar -Dsonar.projectKey=bookings-microservice -Dsonar.host.url=http://jenkins.hitec.link:9000 -Dsonar.login=${params.sonarqubekey}"
                 }
             }
         }
